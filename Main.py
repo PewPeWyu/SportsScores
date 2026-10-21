@@ -1,5 +1,5 @@
 # Create an Intramural score tracker
-
+score = 0
 # Each team entry is a list that includes
 #   - Name
 #   - Games Played
@@ -10,8 +10,11 @@
 #   - Goals Against
 
 # You will ask how many teams are playing.
-# Loop that many times, create a team and set all scores to 0, then append it to your list of teams
-# Start an infinite loop for main menu
+numteams=int(input("How many teams are playing? "))
+# Loop that many times according to user input for example if user typed 3 then ask user "what''s team 1 what's team 2 what's team 3?", create the teams and set all scores to 0, then append it to your list of teams
+for number in range(1,numteams+1):
+    teamname=int(input("What is the name of the team? "))
+# Start an infinite loop for main menu, make a menu first then user input
 #   1) Add score
 #   2) See Team stats
 #   3) See Overall Standings
