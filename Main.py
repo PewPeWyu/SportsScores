@@ -13,11 +13,10 @@ score = 0
 numteams=int(input("How many teams are playing? "))
 # Loop that many times according to user input for example if user typed 3 then ask user "what''s team 1 what's team 2 what's team 3?", create the teams and set all scores to 0, then append it to your list of teams
 for number in range(1,numteams+1):
-    teamname=input("What is the name of the team? ")
+    teamname=input("What is the name of team #{number}? ")
 # Start an infinite loop for main menu, make a menu first then user input
     menu_option = ('score', 'team stats', 'overall standings', 'quit')
     while True:
-        print()
         print('** MENU **')
         print('score')
         print('team stats')
