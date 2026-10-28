@@ -11,25 +11,49 @@ score = 0
 
 # You will ask how many teams are playing.
 numteams=int(input("How many teams are playing? "))
+teams=[]
 # Loop that many times according to user input for example if user typed 3 then ask user "what''s team 1 what's team 2 what's team 3?", create the teams and set all scores to 0, then append it to your list of teams
 for number in range(1,numteams+1):
-    teamname=input(f"What is the name of team #{number}?")
+    name=input(f"What is the name of team #{number}?")
+    team=[name,0,0,0,0,0,0,0]
+    teams.append(team)
+
+for i in range(len(teams)):
+    print(teams[i][0])
 # Start an infinite loop for main menu, make a menu first then user input
-def menu():
+choice=0
+while choice!=1:
+    print("MENU")
     print("[4] score")
     print("[3] team stats")
     print("[2] team score")
     print("[1] quit")
 
-menu()
-option = int(input("Enter your choice:"))
+    choice = int(input("Enter your choice(1-4):"))
 
-while True:
-    if option not in menu:
-        print('Please enter a valid option')
-        continue
 
-     if option == 4:
+    if choice == 4:
+        print("\nteams:")
+        for count, team in enumerate(teams, start=1):
+            print(f"Team #{count}: {team}")
+        t1_num = int(input("Enter your team number:"))
+        t2_num = int(input("Enter your team number:"))
+
+
+
+
+    elif choice == 3:
+        pass
+
+    elif choice == 2:
+        pass
+
+    elif choice == 1:
+        print("goodbye.")
+        break
+
+    else:
+        print("Invalid choice")
 
 
 #   1) Add score
