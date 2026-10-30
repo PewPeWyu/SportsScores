@@ -10,19 +10,19 @@ score = 0
 #   - Goals Against
 
 # You will ask how many teams are playing.
-numteams=int(input("How many teams are playing? "))
-teams=[]
+numteams = int(input("How many teams are playing? "))
+teams = []
 # Loop that many times according to user input for example if user typed 3 then ask user "what''s team 1 what's team 2 what's team 3?", create the teams and set all scores to 0, then append it to your list of teams
-for number in range(1,numteams+1):
-    name=input(f"What is the name of team #{number}?")
-    team=[name,0,0,0,0,0,0,0]
+for number in range(1, numteams + 1):
+    name = input(f"What is the name of team #{number}?")
+    team = [name, 0, 0, 0, 0, 0, 0, 0]
     teams.append(team)
 
 for i in range(len(teams)):
     print(teams[i][0])
 # Start an infinite loop for main menu, make a menu first then user input
-choice=0
-while choice!=1:
+choice = 0
+while choice != 1:
     print("MENU")
     print("[4] score")
     print("[3] team stats")
@@ -31,51 +31,95 @@ while choice!=1:
 
     choice = int(input("Enter your choice(1-4):"))
 
-
     if choice == 4:
         print("teams:")
         for count, team in enumerate(teams, start=1):
             print(f"Team #{count}: {team}")
         while True:
-            t1_num = int(input("Enter your team number:"))
-            t2_num = int(input("Enter your team number:"))
+            t1_num = int(input("Enter the first team number you want:"))
+            t2_num = int(input("Enter the second team number you want:"))
 
             team1 = teams[t1_num - 1]
             team2 = teams[t2_num - 1]
 
             while True:
                 t1_goals = int(input(f"Enter goals scored by {team1[0]}:"))
-                     t2_goals = int(input(f"Enter goals scored by {team2[0]}:"))
-                     team1[1] = team1[1] + 1
-                     team2[1] = team2[1] + 1
+                t2_goals = int(input(f"Enter goals scored by {team2[0]}:"))
+                team1[1] = team1[1] + 1
+                team2[1] = team2[1] + 1
 
-                     team1[5] = team1[5] + t1_goals
-                     team1[6] = team1[6] + t2_goals
-                     team2[5] = team2[5] + t1_goals
-                     team2[6] = team2[6] + t2_goals
+                team1[5] = team1[5] + t1_goals
+                team1[6] = team1[6] + t2_goals
+                team2[5] = team2[5] + t1_goals
+                team2[6] = team2[6] + t2_goals
 
-                     if t1_goals > t2_goals:
-                         team1[2] = team1[2] + 1
-                         team2[3] = team2[3] + 1
-                        print(f"{team1} won by {t1_goals}-{t2_goals}")
-                     elif t1_goals < t2_goals:
-                         team2[3] = team2[3] + 1
-                         team1[2] = team1[2] + 1
-                         print(f"{team2} won by {t2_goals}-{t1_goals}")
-                     else:
-                     team1[4] = team1[4] + 1
-                     team2[4] = team2[4] + 1
-                       print(f"The match ended in a {t1_goals}-{t2_goals} tie!")
+                if t1_goals > t2_goals:
+                    team1[2] = team1[2] + 1
+                    team2[3] = team2[3] + 1
+                    print(f"{team1} won by {t1_goals}-{t2_goals}")
+                elif t1_goals < t2_goals:
+                    team2[3] = team2[3] + 1
+                    team1[2] = team1[2] + 1
+                    print(f"{team2} won by {t2_goals}-{t1_goals}")
+                else:
+                    team1[4] = team1[4] + 1
+                    team2[4] = team2[4] + 1
+                    print(f"The match ended in a {t1_goals}-{t2_goals} tie!")
 
-                        team1[7] = (team1[2] * 2) + (team1[4] * 1)
-                        team2[7] = (team2[2] * 2) + (team2[4] * 1)
-
+                    team1[7] = (team1[2] * 2) + (team1[4] * 1)
+                    team2[7] = (team2[2] * 2) + (team2[4] * 1)
+                break
     elif choice == 3:
-        pass
+        print("teams:")
+        for i in range(len(teams)):
+            print(f"Team #{i + 1}: {teams[i][0]}")
+            while True:
+                team_stat = int(input("Enter the team NUMBER that you want to see stats for:"))
+                selected_team = teams[team_stat - 1]
+                print(f"stats for {selected_team}:")
+                print(f"games played: {selected_team[1]}")
+                print(f"wins: {selected_team[2]}")
+                print(f"losses: {selected_team[3]}")
+                print(f"ties: {selected_team[4]}")
+                print(f"goals for: {selected_team[5]}")
+                print(f"goals against: {selected_team[6]}")
+                print(f"total score: {selected_team[7]}")
+
+        break
 
     elif choice == 2:
-        pass
+        sorted_teams = []
+        for t in teams:
+            sorted_teams.append(t)
 
+        n = len(sorted_teams)
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                team_a = sorted_teams[j]
+                team_b = sorted_teams[j + 1]
+
+                swap = False
+                if team_a[7] < team_b[7]:
+                    swap = True
+                elif team_a[7] == team_b[7]:
+
+                 if team_a[5] < team_b[5]:
+                    swap = True
+                elif team_a[5] == team_b[5]:
+
+                 if team_a[6] > team_b[6]:
+                    swap = True
+
+                if swap:
+                    sorted_teams[j] = team_b
+                    sorted_teams[j + 1] = team_a
+
+                print("overall standings")
+                for rank_idx in range(len(sorted_teams)):
+                    current_team = sorted_teams[rank_idx]
+                    print(f"rank: #{rank_idx + 1}: {current_team[0]}")
+                    print(f"score: {current_team[1]} | {current_team[2]} | {current_team[3]} | {current_team[4]} | {current_team[5]} | {current_team[6]} | {current_team[7]}")
+                    print("-'" * 40)
     elif choice == 1:
         print("goodbye.")
         break
@@ -83,13 +127,12 @@ while choice!=1:
     else:
         print("Invalid choice")
 
-
 #   1) Add score
 #   2) See Team stats
 #   3) See Overall Standings
 #   4) Quit
-#if goals are the same, look for GF.
-#if gf and goals aare the same, look for who has the fewer goals against.
+# if goals are the same, look for GF.
+# if gf and goals aare the same, look for who has the fewer goals against.
 
 #   1) Enter team 1, team 2, goals for team 1, goals for team 2
 #       - Find the teams, update the games played, add the goals for and against, and decide if it's a win, lose or tie
