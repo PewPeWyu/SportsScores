@@ -33,59 +33,59 @@ while choice != 1:
 
     if choice == 4:
         print("teams:")
-        for count, team in enumerate(teams, start=1):
-            print(f"Team #{count}: {team}")
-        while True:
-            t1_num = int(input("Enter the first team number you want:"))
-            t2_num = int(input("Enter the second team number you want:"))
+        for i in range(len(teams)):
+            print(f"Team #{i + 1}: {teams[i][0]}")
 
-            team1 = teams[t1_num - 1]
-            team2 = teams[t2_num - 1]
+        t1_num = int(input("Enter the first team number you want:"))
+        t2_num = int(input("Enter the second team number you want:"))
 
-            while True:
-                t1_goals = int(input(f"Enter goals scored by {team1[0]}:"))
-                t2_goals = int(input(f"Enter goals scored by {team2[0]}:"))
-                team1[1] = team1[1] + 1
-                team2[1] = team2[1] + 1
+        team1 = teams[t1_num - 1]
+        team2 = teams[t2_num - 1]
 
-                team1[5] = team1[5] + t1_goals
-                team1[6] = team1[6] + t2_goals
-                team2[5] = team2[5] + t1_goals
-                team2[6] = team2[6] + t2_goals
 
-                if t1_goals > t2_goals:
-                    team1[2] = team1[2] + 1
-                    team2[3] = team2[3] + 1
-                    print(f"{team1} won by {t1_goals}-{t2_goals}")
-                elif t1_goals < t2_goals:
-                    team2[3] = team2[3] + 1
-                    team1[2] = team1[2] + 1
-                    print(f"{team2} won by {t2_goals}-{t1_goals}")
-                else:
-                    team1[4] = team1[4] + 1
-                    team2[4] = team2[4] + 1
-                    print(f"The match ended in a {t1_goals}-{t2_goals} tie!")
+        t1_goals = int(input(f"Enter goals scored by {team1[0]}:"))
+        t2_goals = int(input(f"Enter goals scored by {team2[0]}:"))
+        team1[1] = team1[1] + 1
+        team2[1] = team2[1] + 1
 
-                    team1[7] = (team1[2] * 2) + (team1[4] * 1)
-                    team2[7] = (team2[2] * 2) + (team2[4] * 1)
-                break
+        team1[5] = team1[5] + t1_goals
+        team1[6] = team1[6] + t2_goals
+        team2[5] = team2[5] + t1_goals
+        team2[6] = team2[6] + t2_goals
+
+        team1[7] = (team1[2] * 2) + (team1[4] * 1)
+        team2[7] = (team2[2] * 2) + (team2[4] * 1)
+
+        if t1_goals > t2_goals:
+            team1[2] = team1[2] + 1
+            team2[3] = team2[3] + 1
+            print(f"{team1} won by {t1_goals}-{t2_goals}")
+        elif t1_goals < t2_goals:
+            team2[3] = team2[3] + 1
+            team1[2] = team1[2] + 1
+            print(f"{team2} won by {t2_goals}-{t1_goals}")
+        else:
+            team1[4] = team1[4] + 1
+            team2[4] = team2[4] + 1
+            print(f"The match ended in a {t1_goals}-{t2_goals} tie!")
+
     elif choice == 3:
         print("teams:")
         for i in range(len(teams)):
             print(f"Team #{i + 1}: {teams[i][0]}")
-            while True:
-                team_stat = int(input("Enter the team NUMBER that you want to see stats for:"))
-                selected_team = teams[team_stat - 1]
-                print(f"stats for {selected_team}:")
-                print(f"games played: {selected_team[1]}")
-                print(f"wins: {selected_team[2]}")
-                print(f"losses: {selected_team[3]}")
-                print(f"ties: {selected_team[4]}")
-                print(f"goals for: {selected_team[5]}")
-                print(f"goals against: {selected_team[6]}")
-                print(f"total score: {selected_team[7]}")
 
-        break
+        team_stat = int(input("Enter the team NUMBER that you want to see stats for:"))
+        selected_team = teams[team_stat - 1]
+        print(f"stats for {selected_team}:")
+        print(f"games played: {selected_team[1]}")
+        print(f"wins: {selected_team[2]}")
+        print(f"losses: {selected_team[3]}")
+        print(f"ties: {selected_team[4]}")
+        print(f"goals for: {selected_team[5]}")
+        print(f"goals against: {selected_team[6]}")
+        print(f"total score: {selected_team[7]}")
+
+
 
     elif choice == 2:
         sorted_teams = []
