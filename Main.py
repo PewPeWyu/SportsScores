@@ -97,29 +97,26 @@ while choice != 1:
             for j in range(0, n - i - 1):
                 team_a = sorted_teams[j]
                 team_b = sorted_teams[j + 1]
-
                 swap = False
                 if team_a[7] < team_b[7]:
                     swap = True
                 elif team_a[7] == team_b[7]:
-
-                 if team_a[5] < team_b[5]:
-                    swap = True
-                elif team_a[5] == team_b[5]:
-
-                 if team_a[6] > team_b[6]:
-                    swap = True
+                    if team_a[5] < team_b[5]:
+                        swap = True
+                    elif team_a[5] == team_b[5]:
+                        if team_a[6] > team_b[6]:
+                           swap = True
 
                 if swap:
                     sorted_teams[j] = team_b
                     sorted_teams[j + 1] = team_a
 
-                print("overall standings")
-                for rank_idx in range(len(sorted_teams)):
-                    current_team = sorted_teams[rank_idx]
-                    print(f"rank: #{rank_idx + 1}: {current_team[0]}")
-                    print(f"score: {current_team[1]} | {current_team[2]} | {current_team[3]} | {current_team[4]} | {current_team[5]} | {current_team[6]} | {current_team[7]}")
-                    print("-'" * 40)
+        print("overall standings")
+        for rank_idx in range(len(sorted_teams)):
+            current_team = sorted_teams[rank_idx]
+            print(f"rank: #{rank_idx + 1}: {current_team[0]}")
+            print(f"score: {current_team[1]} | {current_team[2]} | {current_team[3]} | {current_team[4]} | {current_team[5]} | {current_team[6]} | {current_team[7]}")
+        print("-'" * 40)
     elif choice == 1:
         print("goodbye.")
         break
