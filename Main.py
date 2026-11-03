@@ -26,7 +26,7 @@ while choice != 1:
     print("MENU")
     print("[4] score")
     print("[3] team stats")
-    print("[2] team score")
+    print("[2] team ranks")
     print("[1] quit")
 
     choice = int(input("Enter your choice(1-4):"))
